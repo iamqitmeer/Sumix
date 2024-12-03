@@ -52,9 +52,9 @@ const calculators: { title: string; href: string; description: string; icon: Rea
 export default function Navigation() {
   return (
     <div className="border-b">
-      <div className="flex h-16 items-center px-4 container mx-auto">
+      <div className="flex h-16 items-center justify-between px-4 container mx-auto">
         <Link href="/" className="font-bold text-2xl mr-8 bg-gradient-to-r from-purple-600 to-blue-500 text-transparent bg-clip-text">
-          CalcPro
+        Sumix
         </Link>
         <NavigationMenu className="flex-1">
           <NavigationMenuList>
