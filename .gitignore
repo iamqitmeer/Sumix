@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/.bolt
 /.pnp
 .pnp.js
 
@@ -12,6 +11,9 @@
 # next.js
 /.next/
 /out/
+
+# bolt
+/.bolt/
 
 # production
 /build
@@ -34,3 +36,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
