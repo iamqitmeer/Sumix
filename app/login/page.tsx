@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 
 export default function Component() {
-  let [formMode, setFormMode] = useState();
+  let [formMode, setFormMode] = useState<"login" | "signup" | undefined>();
 
   return (
     <main className="flex min-h-screen w-full items-center justify-center bg-gray-100 px-4 py-12 dark:bg-gray-950">

@@ -17,6 +17,7 @@ export const useUnitConverter = () => {
   const [result, setResult] = useState<number | null>(null);
   const [history, setHistory] = useState<ConversionHistory[]>([]);
   const [favorites, setFavorites] = useState<ConversionHistory[]>([]);
+  const [error, setError] = useState<string | null>(null); // Added error state
 
   useEffect(() => {
     setFromUnit(null);
@@ -31,18 +32,24 @@ export const useUnitConverter = () => {
 
   const handleConvert = () => {
     if (fromUnit && toUnit) {
-      const convertedValue = conversionLogic(value, fromUnit, toUnit);
-      setResult(convertedValue);
+      try {
+        const convertedValue = conversionLogic(value, fromUnit, toUnit);
+        setResult(convertedValue);
 
-      const newConversion: ConversionHistory = {
-        fromValue: value,
-        fromUnit,
-        toValue: convertedValue,
-        toUnit,
-        category: activeTab,
-      };
+        const newConversion: ConversionHistory = {
+          fromValue: value,
+          fromUnit,
+          toValue: convertedValue,
+          toUnit,
+          category: activeTab,
+        };
 
-      setHistory((prev) => [newConversion, ...prev.slice(0, 9)]);
+        setHistory((prev) => [newConversion, ...prev.slice(0, 9)]);
+      } catch (err) {
+        setError('Conversion failed. Please check the units and try again.');
+      }
+    } else {
+      setError('Please select both units before converting.');
     }
   };
 
@@ -77,6 +84,12 @@ export const useUnitConverter = () => {
         fav.category === conversion.category
     );
 
+  // Clear History Function
+  const clearHistory = () => setHistory([]);
+
+  // Clear Favorites Function
+  const clearFavorites = () => setFavorites([]);
+
   return {
     activeTab,
     setActiveTab,
@@ -92,7 +105,10 @@ export const useUnitConverter = () => {
     favorites,
     toggleFavorite,
     isFavorite,
+    clearHistory,  // Added clearHistory
+    clearFavorites, // Added clearFavorites
+    error, // Added error state
+    setError, // Added setError function
     units: unitData[activeTab],
   };
 };
-
