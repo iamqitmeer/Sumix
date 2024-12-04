@@ -7,7 +7,7 @@ import { RoomCalculator } from "./components/room-calculator";
 
 export default function FunCalculators() {
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-full mx-auto">
       <h1 className="text-2xl font-bold mb-6">Fun & Utility Calculators</h1>
       <Tabs defaultValue="love" className="space-y-4">
         <TabsList className="grid grid-cols-3 w-full">
