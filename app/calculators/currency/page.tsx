@@ -19,7 +19,7 @@ export default function CurrencyConverter() {
   const [amount, setAmount] = useState<string>("1");
   const [fromCurrency, setFromCurrency] = useState("USD");
   const [toCurrency, setToCurrency] = useState("EUR");
-  const [result, setResult] = useState<number | null>(null);
+  const [result, setResult] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [currencies, setCurrencies] = useState<any>({});
   const [error, setError] = useState<string | null>(null);
